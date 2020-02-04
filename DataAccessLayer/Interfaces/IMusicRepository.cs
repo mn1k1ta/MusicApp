@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer.Interfaces
 {
-    interface IMusicArtist:IRepository<MusicArtist>
+    public interface IMusicRepository:IRepository<Model.Music>
     {
     }
 }

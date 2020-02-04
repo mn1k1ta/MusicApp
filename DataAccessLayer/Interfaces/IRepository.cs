@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataAccessLayer.Interfaces
 {
-    interface IRepository<T> where T:class
+    public interface IRepository<T> where T:class
     {
         IEnumerable<T> GetALL();
         T Get(int id);

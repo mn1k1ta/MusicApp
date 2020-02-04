@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DataAccessLayer.Repositories
 {
-    public class ArtistRepository:IRepository<Artist>,IArtist
+    public class ArtistRepository:IRepository<Artist>,IArtistRepository
     {
         private MusicContext context;
 

@@ -5,13 +5,13 @@ using System.Text;
 
 namespace DataAccessLayer.Interfaces
 {
-    interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork:IDisposable
     {
-        IRepository<Music> Musics { get; }
-        IRepository<IArtist> Artist { get; }
-        IRepository<IGenre> Genre { get; }
-        IRepository<IMusicArtist> MusicArtist { get; }
-        IRepository<IMusicGenre> MusicGanre { get; }
+        IRepository<Model.Music> Musics { get; }
+        IRepository<Artist> Artists { get; }
+        IRepository<Genre> Genres { get; }
+        IRepository<MusicArtist> MusicArtists { get; }
+        IRepository<MusicGenre> MusicGanres { get; }
 
         void Save();
 
