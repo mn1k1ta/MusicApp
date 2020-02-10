@@ -5,11 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DataAccessLayer.Repositories
 {
-   public class MusicGenreRepository:IRepository<MusicGenre>,IMusicGenreRepository
+    public class MusicGenreRepository:IRepository<MusicGenre>,IMusicGenreRepository
     {
         private MusicContext context;
 
