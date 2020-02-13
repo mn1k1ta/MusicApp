@@ -1,13 +1,17 @@
 ﻿using BuissnesLayer.DTO;
 using DataAccessLayer.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using AutoMapper;
 
 namespace BuissnesLayer.Configurations
 {
-    class BLLMappingProfile
+    class BLLMappingProfile : Profile
     {
-        CreateMap<Genre, GenreDTO>().ReverseMap();
+        public BLLMappingProfile()
+        {
+            CreateMap<Music, MusicDTO>().ReverseMap();
+            CreateMap<Genre, GenreDTO>().ReverseMap();
+            CreateMap<Artist, ArtistDTO>().ReverseMap();
+        }
+       
     }
 }

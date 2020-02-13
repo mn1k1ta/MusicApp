@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
@@ -28,19 +29,23 @@ namespace DataAccessLayer.Repositories
                 context.Genres.Remove(genre);
         }
 
-        public IEnumerable<Genre> Find(Func<Genre, bool> predicate)
+        public IEnumerable<Genre> GetWhere(Func<Genre, bool> predicate)
         {
             return context.Genres.Where(predicate).ToList();
         }
 
-        public Genre Get(int id)
+        public async Task<Genre> GetAsync(int id)
         {
-            return context.Genres.Find(id);
+            return await context.Genres.FindAsync(id);
         }
 
-        public IEnumerable<Genre> GetALL()
+        public IEnumerable<Genre> GetAll()
         {
             return context.Genres;
+        }
+        public async Task<IEnumerable<Genre>> GetAllAsync()
+        {
+            return await context.Genres;
         }
 
         public void Update(Genre item)

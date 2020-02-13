@@ -5,47 +5,48 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
-    class MusicArtistRepository:IRepository<MusicArtist>,IMusicArtistRepository
+    class MusicArtistRepository : IRepository<MusicArtist>, IMusicArtistRepository
     {
-        private MusicContext context;
+        private readonly MusicContext _context;
 
         public MusicArtistRepository(MusicContext context)
         {
-            this.context = context;
+            this._context = context;
         }
         public void Create(MusicArtist item)
         {
-            context.MusicArtists.Add(item);
+            _context.MusicArtists.Add(item);
         }
 
         public void Delete(int id)
         {
-            MusicArtist musicartist = context.MusicArtists.Find(id);
-            if (musicartist != null)
-                context.MusicArtists.Remove(musicartist);
+            MusicArtist musicArtist = _context.MusicArtists.Find(id);
+            if (musicArtist != null)
+                _context.MusicArtists.Remove(musicArtist);
         }
 
-        public IEnumerable<MusicArtist> Find(Func<MusicArtist, bool> predicate)
+        public IEnumerable<MusicArtist> GetWhere(Func<MusicArtist, bool> predicate)
         {
-            return context.MusicArtists.Where(predicate).ToList();
+            return _context.MusicArtists.Where(predicate).ToList();
         }
 
-        public MusicArtist Get(int id)
+        public async Task<MusicArtist> GetAsync(int id)
         {
-            return context.MusicArtists.Find(id);
+            return await _context.MusicArtists.FindAsync(id);
         }
 
-        public IEnumerable<MusicArtist> GetALL()
+        public IEnumerable<MusicArtist> GetAll()
         {
-            return context.MusicArtists;
+            return _context.MusicArtists;
         }
 
         public void Update(MusicArtist item)
         {
-            context.Entry(item).State = EntityState.Modified;
+            _context.Entry(item).State = EntityState.Modified;
         }
     }
 }

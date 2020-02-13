@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
@@ -28,17 +30,17 @@ namespace DataAccessLayer.Repositories
                 context.Artists.Remove(artist);
         }
 
-        public IEnumerable<Artist> Find(Func<Artist, bool> predicate)
+        public IEnumerable<Artist> GetWhere(Func<Artist, bool> predicate)
         {
             return context.Artists.Where(predicate).ToList();
         }
 
-        public Artist Get(int id)
+        public async Task<Artist> GetAsync(int id)
         {
-            return context.Artists.Find(id);
+            return await context.Artists.FindAsync(id);
         }
 
-        public IEnumerable<Artist> GetALL()
+        public IEnumerable<Artist> GetAll()
         {
             return context.Artists;
         }
@@ -46,6 +48,21 @@ namespace DataAccessLayer.Repositories
         public void Update(Artist item)
         {
             context.Entry(item).State = EntityState.Modified;
+        }
+
+        public virtual async Task<ICollection<Artist>> GetAllAsync()
+        {
+            return await _entity.ToListAsync();
+        }
+
+        public virtual async Task<ICollection<Artist>> GetWhereAsync(Expression<Func<Artist, bool>> expression)
+        {
+            return await GetWhere(expression).ToListAsync();
+        }
+
+        public virtual async Task<ICollection<Artist>> GetAllIncludingAsync(params Expression<Func<Artist, object>>[] includeProperties)
+        {
+            return await GetAllIncluding(includeProperties).ToListAsync();
         }
     }
 }
