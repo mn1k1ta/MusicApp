@@ -4,7 +4,7 @@ using AutoMapper;
 
 namespace BuissnesLayer.Configurations
 {
-    class BLLMappingProfile : Profile
+    public class BLLMappingProfile : Profile
     {
         public BLLMappingProfile()
         {

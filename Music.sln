@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music", "Music\Music.csproj", "{3EE1BF69-C87A-47A5-99CF-FE22C8F9BE66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Music", "Music\Music.csproj", "{3EE1BF69-C87A-47A5-99CF-FE22C8F9BE66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuissnesLayer", "BuissnesLayer\BuissnesLayer.csproj", "{650E3375-4801-4022-9CE7-4746F217F447}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuissnesLayer", "BuissnesLayer\BuissnesLayer.csproj", "{650E3375-4801-4022-9CE7-4746F217F447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{97B14A82-EA0A-4222-A4F0-A53AC89B53A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{97B14A82-EA0A-4222-A4F0-A53AC89B53A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

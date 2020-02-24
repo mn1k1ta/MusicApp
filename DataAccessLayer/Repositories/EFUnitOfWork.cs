@@ -2,6 +2,7 @@
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Model;
 using System;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
@@ -20,7 +21,7 @@ namespace DataAccessLayer.Repositories
             this.context = context;
         }
 
-        public IRepository<Model.Music> Musics
+        public IMusicRepository Musics
         {
             get
             {
@@ -30,7 +31,7 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public IRepository<Artist> Artists
+        public IArtistRepository Artists
         {
             get
             {
@@ -92,9 +93,9 @@ namespace DataAccessLayer.Repositories
             GC.SuppressFinalize(this);
         }
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
     }
 }

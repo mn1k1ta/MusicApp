@@ -4,7 +4,9 @@ using System.Text;
 
 namespace BuissnesLayer.DTO
 {
-    class ArtistDTO
+    public class ArtistDTO
     {
+        public int ArtistId { get; set; }
+        public string Name { get; set; }
     }
 }

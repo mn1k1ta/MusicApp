@@ -1,5 +1,7 @@
 ﻿using DataAccessLayer.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +10,9 @@ namespace DataAccessLayer.EF
 {
    public class MusicContext:DbContext
     {
+        public static readonly ILoggerFactory loggerFactory
+           = LoggerFactory.Create(builder => { builder.AddConsole(); });
+
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Music> Musics { get; set; }
         public DbSet<Genre> Genres { get; set; }
@@ -16,8 +21,10 @@ namespace DataAccessLayer.EF
 
         public MusicContext(DbContextOptions options) : base(options)
         {
-
+           
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseLoggerFactory(loggerFactory);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

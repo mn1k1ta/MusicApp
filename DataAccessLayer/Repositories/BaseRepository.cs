@@ -27,11 +27,9 @@ namespace DataAccessLayer.Repositories
             _entity.Add(item);
         }
 
-        public void Delete(int id)
-        {
-            TEntity artist = _entity.Find(id);
-            if (artist != null)
-                _entity.Remove(artist);
+        public void Delete(TEntity item)
+        {        
+                _entity.Remove(item);
         }
 
         public IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> expression)
@@ -50,7 +48,8 @@ namespace DataAccessLayer.Repositories
         }
 
         public void Update(TEntity item)
-        {
+        {   
+            
             _context.Entry(item).State = EntityState.Modified;
         }
 
